@@ -28,7 +28,7 @@
 ;;; Variables
 
 (defvar prettify-url-regexp
-  "https?://\\([^\s\n/]+?\\)/[^\s\n]*")
+  "\\(https?://\\)\\([^\s\n/]+\\.[^\s\n/]+?\\)\\(/[^\s\n]*\\)")
 
 
 ;;; Customization
@@ -42,7 +42,8 @@
 
 (defcustom prettify-url-format
   "[%s]"
-  "Format for redisplaying URLs."
+  "Format for redisplaying URLs.
+URL hostname is the single argument passed to `format'."
   :group 'prettify-url-mode
   :safe 'stringp
   :type string)
@@ -53,7 +54,7 @@
 (defun prettify-url-redisplay (start end)
   (goto-char start)
   (while (re-search-forward prettify-url-regexp end t)
-    (setq string (format prettify-url-format (match-string-no-properties 1)))
+    (setq string (format prettify-url-format (match-string-no-properties 2)))
     (put-text-property (match-beginning 0) (match-end 0) 'display
                        string)))
 
