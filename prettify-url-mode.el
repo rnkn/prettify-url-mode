@@ -60,6 +60,7 @@
 
 ;;; Mode Definition
 
+;;;###autoload
 (define-minor-mode prettify-url-mode
   "Redisplay date and time strings in pretty format."
   :init-value nil
