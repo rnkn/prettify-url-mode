@@ -46,7 +46,7 @@
 URL hostname is the single argument passed to `format'."
   :group 'prettify-url-mode
   :safe 'stringp
-  :type string)
+  :type 'string)
 
 
 ;;; Functions
