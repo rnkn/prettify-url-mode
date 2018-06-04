@@ -54,9 +54,9 @@ URL hostname is the single argument passed to `format'."
 (defun prettify-url-redisplay (start end)
   (goto-char start)
   (while (re-search-forward prettify-url-regexp end t)
-    (setq string (format prettify-url-format (match-string-no-properties 2)))
-    (put-text-property (match-beginning 0) (match-end 0) 'display
-                       string)))
+    (let ((string (format prettify-url-format (match-string-no-properties 2))))
+      (put-text-property (match-beginning 0) (match-end 0) 'display
+                         string))))
 
 
 ;;; Mode Definition
