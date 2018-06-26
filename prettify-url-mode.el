@@ -28,7 +28,10 @@
 ;;; Variables
 
 (defvar prettify-url-regexp
-  "\\(https?://\\)\\([^\s\n/]+\\.[^\s\n/]+?\\)\\(/[^\s\n]*\\)")
+  (concat
+   "\\(?1:https?://\\)\\(?2:[-.[:alnum:]]+\\)\\(?3:/[]-a-zA-Z0-9$_.+!*'(),/?=]+\\)*"
+   "\\|"
+   "\\(?1:file:///\\)[^\s\n]+/\\(?2:[^\s\n]*\\)"))
 
 
 ;;; Customization
